@@ -1,6 +1,13 @@
-﻿namespace Andela.Application;
+﻿using Andela.Domain;
 
-public class Class1
+namespace Andela.Application;
+
+public class Class200
 {
-
+  public int hello()
+  {
+    Class2 class2 = new(); 
+    class2.SayHello();
+    return 0;
+  }
 }
