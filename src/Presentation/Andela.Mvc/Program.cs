@@ -1,7 +1,14 @@
+using Andela.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//----- BEGIN PERSONAL SERVICES -----//
+// builder.Services.AddMyDebesita(builder.Configuration);
+
+//----- END PERSONAL SERVICES -----//
 
 var app = builder.Build();
 
