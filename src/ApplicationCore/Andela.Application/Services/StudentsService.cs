@@ -11,13 +11,13 @@ namespace Andela.Application.Services
     {
         _studentRepository = studentRepository;
     }
-    public List<Student> GetAll()
+    public IEnumerable<StudentDTO> GetAll()
     {
       var users = _studentRepository.GetAll();
       return users;
     }
 
-    public Student GetById(int Id)
+    public StudentDTO GetById(int Id)
     {
       var student = _studentRepository.GetById(Id);
       return student;

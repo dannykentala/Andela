@@ -1,28 +1,33 @@
 using Andela.Domain.Entities;
 using Andela.Domain.Intefaces;
 using Andela.Infrastructure.Data;
+using AutoMapper;
 
 namespace SchoolApi.Services.StudentsRepository
 {
   public class StudentsRepository: IStudentRepository
   {
     private readonly BaseContext _context;
+    private readonly IMapper _mapper;
 
-    public StudentsRepository(BaseContext context)
+    public StudentsRepository(BaseContext context, IMapper mapper)
     {
       _context = context;
+      _mapper = mapper;
     }
 
-    public List<Student> GetAll()
+    public IEnumerable<StudentDTO> GetAll()
     {
       var data = _context.Students.ToList();
-      return data;
+      IEnumerable<StudentDTO> studentDTOs = _mapper.Map<IEnumerable<StudentDTO>>(data);
+      return studentDTOs;
     }
 
-    public Student GetById(int Id)
+    public StudentDTO GetById(int Id)
     {
       var data = _context.Students.Find(Id);
-      return data;
+      StudentDTO studentDTO = _mapper.Map<StudentDTO>(data);
+      return studentDTO;
     }
 
   }

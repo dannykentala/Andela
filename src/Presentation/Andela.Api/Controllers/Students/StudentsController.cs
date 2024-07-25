@@ -17,13 +17,13 @@ namespace Andela.Api.Controllers.Students
     }
 
     [HttpGet]
-    public List<Student> GetAll()
+    public IEnumerable<StudentDTO> GetAll()
     {
       return _studentsService.GetAll();
     }
 
     [HttpGet("{Id}")]
-    public Student GetById(int Id)
+    public StudentDTO GetById(int Id)
     {
       return _studentsService.GetById(Id);
     }

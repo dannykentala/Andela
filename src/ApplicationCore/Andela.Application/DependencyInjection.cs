@@ -1,6 +1,9 @@
 ﻿using Andela.Application.Services;
 using Andela.Domain;
+using Andela.Domain.Entities;
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Store.ApplicationCore.Mappings;
 
 namespace Andela.Application
 {
@@ -10,7 +13,11 @@ namespace Andela.Application
     {
       //----- Repository 
       services.AddScoped<StudentsService>();
-    return services;
+
+      //----- Automaper
+      services.AddAutoMapper(typeof(StudentProfile));
+
+      return services;
     }
   }
 }
