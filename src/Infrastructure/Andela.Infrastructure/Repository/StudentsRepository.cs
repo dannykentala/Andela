@@ -1,9 +1,9 @@
 using Andela.Domain.Entities;
-using Andela.Domain.Intefaces;
+using Andela.Domain.Intefaces.Repositories;
 using Andela.Infrastructure.Data;
 using AutoMapper;
 
-namespace SchoolApi.Services.StudentsRepository
+namespace Andela.Infrastructure.Repository
 {
   public class StudentsRepository: IStudentRepository
   {

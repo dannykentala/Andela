@@ -1,5 +1,5 @@
 using Andela.Domain.Entities;
-using Andela.Domain.Intefaces;
+using Andela.Domain.Intefaces.Repositories;
 
 namespace Andela.Application.Services
 {

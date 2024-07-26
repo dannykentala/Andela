@@ -1,8 +1,10 @@
-﻿using Andela.Domain.Intefaces;
-using Andela.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Andela.Domain.Intefaces.Repositories;
+using Andela.Infrastructure.Data;
+using Andela.Infrastructure.Repository;
+using Andela.Domain.Intefaces.Services;
 using SchoolApi.Services.StudentsRepository;
 
 namespace Andela.Infrastructure
@@ -16,11 +18,15 @@ namespace Andela.Infrastructure
       //----- MySQL connection
       services.AddDbContext<BaseContext>(options =>
         options.UseMySql(
-            configuration.GetConnectionString("MySqlConnection"),
-            Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+          configuration.GetConnectionString("MySqlConnection"),
+          Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
       
       //----- Repository 
       services.AddScoped<IStudentRepository, StudentsRepository>();
+
+      //----- ExcelService
+      services.AddScoped<IExcelService, ExcelService>();
+      
     return services;
     }
   }

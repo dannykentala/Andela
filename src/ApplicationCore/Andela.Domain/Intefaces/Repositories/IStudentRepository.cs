@@ -1,6 +1,6 @@
 using Andela.Domain.Entities;
 
-namespace Andela.Domain.Intefaces
+namespace Andela.Domain.Intefaces.Repositories
 {
   public interface IStudentRepository
   {
