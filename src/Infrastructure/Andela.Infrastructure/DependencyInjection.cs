@@ -26,7 +26,7 @@ namespace Andela.Infrastructure
 
       //----- ExcelService
       services.AddScoped<IExcelService, ExcelService>();
-      
+
     return services;
     }
   }
