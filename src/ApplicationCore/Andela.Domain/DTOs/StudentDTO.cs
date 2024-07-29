@@ -1,10 +1,10 @@
-using Andela.Domain.Common;
-
-namespace Andela.Domain.Entities
+namespace Andela.Domain.DTOs
 {
-    public class StudentDTO
-    {
-      // public int Id { get; set; }
-      public string Name { get; set; }
-    }
+  public class StudentDTO
+  {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+  }
 }

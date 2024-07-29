@@ -1,10 +1,11 @@
+using Andela.Domain.DTOs;
 using Andela.Domain.Entities;
 
 namespace Andela.Domain.Intefaces.Services
 {
   public interface IExcelService
   {
-    void UploadExcelToDb();
+    List<ExcelDTO> ConvertExcelToDbObject();
     // File ParseDbToExcel();
   }
 }

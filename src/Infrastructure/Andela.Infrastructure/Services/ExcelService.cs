@@ -1,3 +1,5 @@
+using Andela.Application.Mappers;
+using Andela.Domain.DTOs;
 using Andela.Domain.Intefaces.Services;
 using OfficeOpenXml;
 
@@ -8,15 +10,19 @@ namespace SchoolApi.Services.StudentsRepository
     // private readonly string _assetsDir = "../../../";
     private string _excelDir = $"../../../assets/data/excel/basesita.xlsx";
     private ExcelWorksheet _excelSheet;
+    private readonly ExcelMapper _excelMapper;
 
 
-    public ExcelService()
+    public ExcelService(ExcelMapper excelMapper)
     {
       ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+      _excelMapper = excelMapper;
     }
 
-    public void UploadExcelToDb()
+    public List<ExcelDTO> ConvertExcelToDbObject()
     {
+      List<ExcelDTO> ExcelEntries = new();
+
       using(ExcelPackage excelPackage = new ExcelPackage(_excelDir))
       {
         _excelSheet = excelPackage.Workbook.Worksheets[0];
@@ -25,14 +31,17 @@ namespace SchoolApi.Services.StudentsRepository
 
         for(int i = FirstRow(); i < lastRow; i++)
         {
-          var rowData = GetRowInfo(i);
+          List<string> rowData = GetRowInfo(i);
+          ExcelDTO excelDTO = _excelMapper.ExcelRegisterToExcelDTO(rowData);
         }
 
         excelPackage.Save();
       }
+
+      return ExcelEntries;
     }
 
-    private int EndColunm()
+    private int LastColunm()
     {
       return _excelSheet.Dimension.End.Column;
     }
@@ -54,7 +63,7 @@ namespace SchoolApi.Services.StudentsRepository
 
       int firstColum = _excelSheet.Dimension.Start.Column;
 
-      for(int i = firstColum; i < EndColunm(); i++)
+      for(int i = firstColum; i <= LastColunm(); i++)
       {
         string cell = _excelSheet.Cells[rowNumber,i].Value.ToString();
         rowValues.Add(cell);

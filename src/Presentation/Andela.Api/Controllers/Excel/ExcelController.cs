@@ -20,7 +20,7 @@ namespace Andela.Api.Controllers.Students
     [HttpPost]
     public void GetAll()
     {
-      _excelService.UploadExcelToDb();
+      _excelService.ConvertExcelToDbObject();
     }
 
 

@@ -1,9 +1,9 @@
-﻿using Andela.Application.Services;
+﻿using Andela.Application.Mappers;
+using Andela.Application.Services;
 using Andela.Domain;
 using Andela.Domain.Entities;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using Store.ApplicationCore.Mappings;
 
 namespace Andela.Application
 {
@@ -16,6 +16,8 @@ namespace Andela.Application
 
       //----- Automaper
       services.AddAutoMapper(typeof(StudentProfile));
+
+      services.AddScoped<ExcelMapper>();
 
       return services;
     }

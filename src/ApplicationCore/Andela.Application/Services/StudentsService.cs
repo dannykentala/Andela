@@ -1,3 +1,4 @@
+using Andela.Domain.DTOs;
 using Andela.Domain.Entities;
 using Andela.Domain.Intefaces.Repositories;
 
@@ -6,8 +7,8 @@ namespace Andela.Application.Services
 
   public class StudentsService
   {
-    private readonly IStudentRepository _studentRepository;
-    public StudentsService (IStudentRepository studentRepository)
+    private readonly IStudentsRepository _studentRepository;
+    public StudentsService (IStudentsRepository studentRepository)
     {
         _studentRepository = studentRepository;
     }

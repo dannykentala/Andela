@@ -22,7 +22,7 @@ namespace Andela.Infrastructure
           Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
       
       //----- Repository 
-      services.AddScoped<IStudentRepository, StudentsRepository>();
+      services.AddScoped<IStudentsRepository, StudentsRepository>();
 
       //----- ExcelService
       services.AddScoped<IExcelService, ExcelService>();
