@@ -27,9 +27,7 @@ namespace SchoolApi.Services.StudentsRepository
       {
         _excelSheet = excelPackage.Workbook.Worksheets[0];
 
-        int lastRow = _excelSheet.Dimension.End.Row;
-
-        for(int i = FirstRow(); i < lastRow; i++)
+        for(int i = FirstRow(); i < LastRow(); i++)
         {
           List<string> rowData = GetRowInfo(i);
           ExcelDTO excelDTO = _excelMapper.ExcelRegisterToExcelDTO(rowData);
@@ -39,11 +37,6 @@ namespace SchoolApi.Services.StudentsRepository
       }
 
       return ExcelEntries;
-    }
-
-    private int LastColunm()
-    {
-      return _excelSheet.Dimension.End.Column;
     }
 
     private int FirstRow()
@@ -75,6 +68,16 @@ namespace SchoolApi.Services.StudentsRepository
     private int HeaderRow()
     {
       return _excelSheet.Dimension.Start.Row;
+    }
+
+    private int LastColunm()
+    {
+      return _excelSheet.Dimension.End.Column;
+    }
+
+    private int LastRow()
+    {
+      return _excelSheet.Dimension.End.Row;
     }
   }
 }
